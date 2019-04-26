@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+        const person = {
+            name: 'Germán',
+            age: 32,
+            celiac: false,
+            height: 1.84,
+            subscriptions: [
+                {
+                    name: 'netflix',
+                    price: 19.95
+                },
+                {
+                    name: 'spotify',
+                    price: 9.99
+                }
+            ],
+            hobbies: ['techno', 'sky'],
+            present: function () {
+                alert(`Mi nombre es ${this.name} y tengo ${this.age} años`)
+            },
+            subscribe: function (sName, sPrice) {
+                this.subscriptions.push(
+                    { name: sName, price: sPrice }
+                )
+            }
+        }
+
+        console.log(person)
+        person.present()
+        person.subscribe('HBO', 25)
+
+
+
+
+        // Acceso a valores de propiedades (uso getter de propiedades)
+        console.log(person.name)
+        console.log(person['name'])
+
+
+
+        // Iteración sobre posiciones de array 'subscriptions'
+        const subscr = person.subscriptions
+
+        subscr.forEach(subscription => {
+            if (subscription.price < 10) {
+                console.log(subscription.price)
+            }
+        })
+
+
+
+        console.log(person.age)     // uso getter de propiedad
+        person.age = 33             // uso setter de propiedad
+        console.log(person.age)     // uso getter de propiedad
+
+
+
+        // Adhesión externa de propiedad
+        person.married = true
+        person['gender'] = 'm'
+        console.log(person)
+
+
+        // Operador 'in' comprueba la existencia de una propiedad en un objeto
+        console.log('name' in person)
+
+
+        // Operador 'delete' elimina propiedad de un objeto
+        delete person.age
+
+
+        //.keys() y .values() recorren las propiedades y valores de un objeto, respectivamente
+        console.log(Object.keys(person))
+        console.log(Object.values(person))
+
+
+
+        // El bucle for-in recorre las propiedades de un objeto
+        for (let key in person) {
+            console.log(`${key} : ${person[key]}`);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class Document {
+
+            constructor(num, date, client) {
+                this._num = num
+                this._date = date
+                this._client = client
+            }
+
+            showGeneralInfo() {
+                alert(`Document n.${this._num}, on date ${this._date} from client ${this._client}`)
+            }
+        }
+
+
+        class Invoice extends Document {        // La palabra reservada 'extends' extiende la clase padre con la clase hija
+
+            constructor(num, date, client, subtotal, tax) {
+                super(num, date, client)
+                this._subtotal = subtotal
+                this._tax = tax
+                this._currency = '€'
+            }
+
+            showTotal() {
+                alert(`The invoice total is ${this._subtotal + this._tax} ${this._currency} (Customer: ${this._client})`)
+            }
+        }
+
+
+
+        class DeliveryNote extends Document {
+
+            constructor(num, date, client, time) {
+                super(num, date, client)
+                this._time = time
+            }
+
+            showTime() {
+                alert(`The pack was delivered at ${this._time}`)
+            }
+
+            changeTime(newTime) {
+                this._time = newTime
+            }
+        }
+
+
+
+
+        const doc = new Document(7653, '26/04/19', 'Accor Hoteles')
+        doc.showGeneralInfo()
+
+        const factu = new Invoice(64846, '26/04/19', 'IBIS', 100, 21)
+        factu.showTotal()
+
+        const deli = new DeliveryNote(64846, '26/04/19', 'IBIS', '10:30')
+        deli.showTime()
+        deli.changeTime('20:45')
+        deli.showTime()
+
+
+
+    </script>
+</body>
+
+</html>

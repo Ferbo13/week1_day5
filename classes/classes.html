@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class Person {
+
+
+            constructor(name, height, celiac) {     // El método constructor se activa con 'new', recibiendo los argumentos
+                this._name = name                   // Las propiedades internas se diferencian por llevar un guión bajo en el nombre
+                this._height = height
+                this._celiac = celiac
+                this._arms = 2
+                this._hobbies = []
+            }
+
+            present() {
+                alert(`Mi nombre es ${this._name} y tengo ${this._height} de altura`)
+            }
+
+            newHobbie(hobbie) {
+                this._hobbies.push(hobbie)
+            }
+        }
+
+
+
+
+        const myPerson1 = new Person('German', 1.85, true)
+        const myPerson2 = new Person('Sara', 1.95, false)
+
+        console.log(myPerson1._name)
+        myPerson2.present()
+
+        alert(myPerson1._hobbies)
+        myPerson1.newHobbie('Patinaje')
+        alert(myPerson1._hobbies)
+
+
+    </script>
+</body>
+
+</html>
